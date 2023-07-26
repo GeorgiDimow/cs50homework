@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the national flower of Japan?</h3>
+                <button id="b1" onclick="correctAnswerButton(document.getElementById('b1'))">A. Cherry Blossom</button>
+                <button id="b2" onclick="incorrectAnswerButton(document.getElementById('b2'))">B. Lotus</button>
+                <button id="b3" onclick="incorrectAnswerButton(document.getElementById('b3'))">C. Sunflower</button>
+                <button id="b4" onclick="incorrectAnswerButton(document.getElementById('b4'))">D. Rose</button>
+                <p id="result1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Who was the first person to set foot on the moon?</h3>
+                <input id="t" type="text" autocomplete="off" />
+                <input id="b" onclick="checkAnswer()" type="submit" />
+                <p id="result2"></p>
+            </div>
+        </div>
+        <script>
+            let result1 = document.getElementById('result1');
+            let result2 = document.getElementById('result2');
+
+            function correctAnswerButton(button) {
+                button.style.backgroundColor = "green";
+                result1.innerHTML = "Correct!";
+            }
+
+            function incorrectAnswerButton(button) {
+                button.style.backgroundColor = "red";
+                result1.innerHTML = "Incorrect";
+            }
+
+
+            function checkAnswer() {
+
+                let input = document.getElementById("t");
+                const val = input.value.toLowerCase().trim();
+
+                if (val === "neil armstrong") {
+                    input.style.backgroundColor = "green";
+                    result2.innerHTML = "Correct!";
+                } else {
+                    result2.innerHTML = "Incorrect";
+                    input.style.backgroundColor = "red";
+                }
+            }
+        </script>
+    </body>
+
+</html>

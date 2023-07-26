@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Birthdays</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+                <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+                <form action="/" method="post">
+                    <hr>
+                    <input type="text" autofocus autocomplete="off" name="Name" placeholder="Name">
+                    <input type="text" autocomplete="off" name="Month" placeholder="Month">
+                    <input type="text" autocomplete="off" name="Day" placeholder="Day">
+                    <input type="submit" value="Add Birthday">
+                </form>
+                <p>{{ massege }}</p>
+            </div>
+
+            <div class="section">
+
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for bday in db_list_of_bdays %}
+                        <tr>
+                            <td>{{ bday.name }}</td>
+                            <td>{{ bday.month }}/{{ bday.day }}</td>
+                        </tr>
+                        {% endfor %}
+                        <!-- TODO: Loop through the database entries to display them in this table -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
