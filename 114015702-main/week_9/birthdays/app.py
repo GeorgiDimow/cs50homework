@@ -29,13 +29,11 @@ def index():
         name = request.form.get('Name')
         month = request.form.get('Month')
         day = request.form.get('Day')
-
-        if(len(name) > 2 and 0 < int(month) < 13 and 0 < int(day) < 31):
-            db.execute("INSERT INTO birthdays (id, name, month, day) VALUES (?, ?, ?, ?);", db_id, name, month, day)
-        else:
-            
-            incorrect_data = 'Some info may be missing or typed incorrectly!'
-            return render_template("index.html", massege=incorrect_data)
+        try:
+            if(len(name) > 2 and 0 < int(month) < 13 and 0 < int(day) < 31):
+                db.execute("INSERT INTO birthdays (id, name, month, day) VALUES (?, ?, ?, ?);", db_id, name, month, day)
+        except ValueError:
+            pass
 
         return redirect("/")
 

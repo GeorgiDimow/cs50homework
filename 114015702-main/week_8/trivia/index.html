@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the national flower of Japan?</h3>
+                <button class="option-btn" onclick="checkAnswer(this)">Cherry Blossom</button>
+                <button class="option-btn" onclick="checkAnswer(this)">Lotus</button>
+                <button class="option-btn" onclick="checkAnswer(this)">Sunflower</button>
+                <button class="option-btn" onclick="checkAnswer(this)">Rose</button>
+                <p id="result1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Who was the first person to set foot on the moon?</h3>
+                <input id="t" type="text" autocomplete="off" />
+                <input id="b" onclick="checkOpenAnswer()" type="submit" />
+                <p id="result2"></p>
+            </div>
+        </div>
+        <script>
+            function checkAnswer(button) {
+                const correctAnswer = "Cherry Blossom";
+                const selectedAnswer = button.innerText;
+                const allButtons = document.querySelectorAll('.option-btn');
+
+                if (selectedAnswer === correctAnswer) {
+                    button.classList.add('correct');
+                    for (const btn of allButtons) {
+                        if (btn !== button) {
+                            btn.classList.add('disabled');
+                        }
+                    }
+                } else {
+                    button.classList.add('incorrect');
+                    for (const btn of allButtons) {
+                    if (btn !== button) {
+                            btn.classList.add('disabled');
+                        }
+                    }
+                }
+            }
+
+
+            function checkOpenAnswer() {
+
+                let input = document.getElementById("t");
+                const val = input.value.toLowerCase().trim();
+                const button = document.getElementById("b");
+
+                if (val === "neil armstrong") {
+                    input.classList.add('correct');
+                    button.classList.add('disabled');
+                } else {
+                    input.classList.add('incorrect');
+                    button.classList.add('disabled');
+                }
+            }
+        </script>
+    </body>
+
+</html>

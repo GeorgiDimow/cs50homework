@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Birthdays</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+
+                <form action="/" onsubmit="return validateForm()" method="post">
+                    <hr>
+                    <input id="name" type="text" autofocus autocomplete="off" name="Name" placeholder="Name">
+                    <input id="month" type="text" autocomplete="off" name="Month" placeholder="Month">
+                    <input id="day" type="text" autocomplete="off" name="Day" placeholder="Day">
+                    <input type="submit" value="Add Birthday">
+                </form>
+
+                <p id="messege">{{ massege }}</p>
+            </div>
+
+            <div class="section">
+
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for bday in db_list_of_bdays %}
+                        <tr>
+                            <td>{{ bday.name }}</td>
+                            <td>{{ bday.month }}/{{ bday.day }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+    <script>
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            let month = document.getElementById("month").value;
+            let day = document.getElementById("day").value;
+
+            if (name.trim() === '') {
+                alert('Please enter your name.');
+                return false;
+            }
+
+            if (month.trim() === '') {
+                alert('Please enter month.');
+                return false;
+            }
+            month = parseInt(month)
+
+            if (day.trim() === '') {
+                alert('Please enter day.');
+                return false;
+            }
+            day = parseInt(day)
+
+            if (name.length < 2) {
+                alert(`The name must be more than 2 char long.`);
+                return false;
+            }
+
+            if ((day < 0 || day > 31) && (month < 0 || month > 12)) {
+                alert(`Invalid date.`);
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</html>

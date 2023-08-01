@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <div class="card" >
+        <div class="card-body ">
+            <h5 class="card-title">{{ symbol }}</h5>
+            <p class="card-text">per share {{ price }}</p>
+        </div>
+    </div>
+{% endblock %}

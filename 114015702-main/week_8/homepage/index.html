@@ -28,15 +28,18 @@
         <form class="d-flex p-3 m-2 border-0 justify-content-center">
             <input class="w-25 form-control" list="datalistOptions" autocomplete="off" id="search" placeholder="Type to search..." />
         </form>
-        <div class="d-flex justify-content-center" id="bookPreveiw">
-        </div>
+            <div class="d-flex justify-content-center" id="bookPreveiw">
+
+            </div>
         <template id="template">
-            <div class="card p-1 m-2 " id="card" style="width: 18rem;" class="flex-shrink-0">
-                <img class="card-img-top rounded mx-auto d-block" id="imgBook" />
-                <div class="card-body">
-                    <h5 class="card-title" id="name"></h5>
-                    <p class="card-text" id="author"></p>
-                    <a class="btn btn-primary">See more</a>
+            <div class="card-columns" >
+                <div class="card p-1 m-2">
+                    <img class="card-img-top rounded mx-auto " style="width: 12vw; height: 30vw; " id="imgBook" />
+                    <div class="card-body" >
+                        <h5 class="card-title" id="name"></h5>
+                        <p class="card-text" id="author"></p>
+                        <a class="btn btn-primary">See more</a>
+                    </div>
                 </div>
             </div>
         </template>
